@@ -7,18 +7,18 @@ else
 end
 
 if defined? Rails
-  require "activerecord-postgres-hstore/railties"
+  require "rails/hstore_railtie"
 else
   ActiveSupport.on_load :active_record do
-    require "activerecord-postgres-hstore/active_record/base"
-    require "activerecord-postgres-hstore/active_record/connection_adapters/postgresql_adapter"
-    require "activerecord-postgres-hstore/active_record/connection_adapters/postgresql_column"
-    require "activerecord-postgres-hstore/active_record/connection_adapters/schema_statements"
-    require "activerecord-postgres-hstore/active_record/connection_adapters/table"
-    require "activerecord-postgres-hstore/active_record/connection_adapters/table_definition"
+    require "active_record/base"
+    require "active_record/connection_adapters/postgresql_adapter"
+    require "active_record/connection_adapters/postgresql_column"
+    require "active_record/connection_adapters/schema_statements"
+    require "active_record/connection_adapters/table"
+    require "active_record/connection_adapters/table_definition"
   end
 end
 
-require "activerecord-postgres-hstore/string"
-require "activerecord-postgres-hstore/hash"
-require "activerecord-postgres-hstore/coder"
+require "core_ext/string"
+require "core_ext/hash"
+require "active_record/coders/hstore"
