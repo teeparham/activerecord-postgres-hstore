@@ -67,6 +67,16 @@ describe ActiveRecord::Coders::Hstore do
       let(:value){ {"'a'" => "'a'"} }
       it{ should eql(%q("'a'"=>"'a'")) }
     end
+    
+    context 'when value has double quotes' do
+      let(:value){ {"a" => "\"a\""} }
+      it{ should eql(%q("a"=>"\"a\"")) }
+    end    
+    
+    context 'when value has double-escaped double quotes' do
+      let(:value){ {"a" => "\\\"a\\\""} }
+      it{ should eql(%q("a"=>"\"a\"")) }
+    end    
 
     context 'when value is empty hash' do
       let(:value){ {} }
